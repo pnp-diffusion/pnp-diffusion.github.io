@@ -1,0 +1,729 @@
+<link href="https://fonts.cdnfonts.com/css/chalkduster" rel="stylesheet">
+<style>
+    @import url('https://fonts.cdnfonts.com/css/chalkduster');
+</style>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Plug-and-Play Diffusion Features for Text-Driven Image-to-Image Translation</title>
+<link href="./assets/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<button style="position: fixed;right: 15px;top:  50%;height: 100px;width: 140px; font-size: 20px;" type="button"><a href="#top">Back to top</a></button> 
+<div class="page-container">
+  <h1 align="center">Plug-and-Play Diffusion Features for Text-Driven Image-to-Image Translation</h1>
+  <h2 align="center">Supplementary Material</h2>
+	
+  <p align="center">&nbsp;</p>
+	<a href="#top"></a>
+  <ul>
+	<li><a href="#our_results_container">Our Results</a></li>
+	<li><a href="#comparisons_baselines_container">Comparisons to Baselines</a></li>
+    <li><a href="#additional_qual_comp">Additional Qualitative Comparisons</a></li>
+    <li><a href="./assets/pca.html">Diffusion Features PCA Visualizations</a></li>
+  </ul>
+  <p><br><span class="emph">We recommend watching all images in full screen. Click on the images for seeing them in full scale.</span></p>
+	
+  <!------------------ BEGIN SECTION ------------------>
+
+  <p>&nbsp;</p>
+  <hr>
+	
+  <h2 id="our_results_container" align="left"><a name="image-results" id="image-results"></a>Our Results</h2>
+
+
+  <p align="left">
+    We present sample results of our method on 3 benchmarks - Wild TI2I - Real Images, Wild TI2I - Generated Images, and ImageNet-R TI2I (See the Supplementary PDF and the paper for details).
+    Our method preserves the structure of the guidance image while matching the description of the target prompt.
+  </p>
+
+  <br/>
+
+  <p style="font-size: 20px" align="left">Wild TI2I - Real images</p>
+  <hr>
+  <br/>
+  
+  <table  width="1200" align="center">
+		<tbody>
+			<!-- <th>A</th>
+			<th>B</th>
+			<th>C</th> -->
+                <tr>
+                    <th style="font-size: 16px">Input image</th>
+                    <th style="font-family: Chalkduster">"a photo of a bronze horse in a museum"</th>
+                    <th style="font-family: Chalkduster">"a photo of a pink toy horse on the beach"</th>
+                    <th style="font-family: Chalkduster">"a photo of a robot horse"</th>
+                </tr>
+                <tr>
+                    <th><a href="./assets/our_results/white_horse/horse.jpg"> <a href="./assets/our_results/white_horse/horse.jpg"> <img  width="224" src="./assets/our_results/white_horse/horse.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/white_horse/bronze_horse.jpg"> <a href="./assets/our_results/white_horse/bronze_horse.jpg"> <img  width="224" src="./assets/our_results/white_horse/bronze_horse.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/white_horse/pink_horse.jpg"> <a href="./assets/our_results/white_horse/pink_horse.jpg"> <img  width="224" src="./assets/our_results/white_horse/pink_horse.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/white_horse/robot_horse.jpg"> <a href="./assets/our_results/white_horse/robot_horse.jpg"> <img  width="224" src="./assets/our_results/white_horse/robot_horse.jpg" /> </a> </a></th>
+                </tr>
+
+                <tr> <td><br /></td> </tr>
+
+                <tr>
+                    <th style="font-size: 16px">Input image</th>
+                    <th style="font-family: Chalkduster">"a photo of robots dancing"</th>
+                    <th style="font-family: Chalkduster">"a cartoon of a couple dancing"</th>
+                    <th style="font-family: Chalkduster">"a photo of a wooden sculpture of a couple dancing"</th>
+                </tr>
+                <tr>
+                    <th><a href="./assets/our_results/dancing_couple/dancing.jpg"> <a href="./assets/our_results/dancing_couple/dancing.jpg"> <img  width="224" src="./assets/our_results/dancing_couple/dancing.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/dancing_couple/robots_dancing.jpg"> <a href="./assets/our_results/dancing_couple/robots_dancing.jpg"> <img  width="224" src="./assets/our_results/dancing_couple/robots_dancing.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/dancing_couple/cartoon_dancing.jpg"> <a href="./assets/our_results/dancing_couple/cartoon_dancing.jpg"> <img  width="224" src="./assets/our_results/dancing_couple/cartoon_dancing.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/dancing_couple/wooden_sculpture_dancing.jpg"> <a href="./assets/our_results/dancing_couple/wooden_sculpture_dancing.jpg"> <img  width="224" src="./assets/our_results/dancing_couple/wooden_sculpture_dancing.jpg" /> </a> </a></th>
+                </tr>
+
+                <tr> <td><br /></td> </tr>
+
+				<tr>
+                    <th style="font-size: 16px">Input image</th>
+                    <th style="font-family: Chalkduster">"a photo of a golden robot"</th>
+                    <th style="font-family: Chalkduster">"a photo of a wooden statue"</th>
+                    <th style="font-family: Chalkduster">"a photo of a sand sculpture"</th>
+                </tr>
+                <tr>
+                    <th><a href="./assets/our_results/spiderman/spiderman.jpg"> <a href="./assets/our_results/spiderman/spiderman.jpg"> <img  width="224" src="./assets/our_results/spiderman/spiderman.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/spiderman/golden_robot.jpg"> <a href="./assets/our_results/spiderman/golden_robot.jpg"> <img  width="224" src="./assets/our_results/spiderman/golden_robot.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/spiderman/wooden_statue.jpg"> <a href="./assets/our_results/spiderman/wooden_statue.jpg"> <img  width="224" src="./assets/our_results/spiderman/wooden_statue.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/spiderman/sandman.jpg"> <a href="./assets/our_results/spiderman/sandman.jpg"> <img  width="224" src="./assets/our_results/spiderman/sandman.jpg" /> </a> </a></th>
+                </tr>
+
+                <tr> <td><br /></td> </tr>
+
+				<tr>
+                    <th style="font-size: 16px">Input image</th>
+                    <th style="font-family: Chalkduster">"a photorealistic image of bear cubs in the snow"</th>
+                    <th style="font-family: Chalkduster">"a polygonal illustration of a cat and a bunny"</th>
+                    <th style="font-family: Chalkduster">"a photorealistic image of a cat and a bunny"</th>
+                </tr>
+                <tr>
+                    <th><a href="./assets/our_results/cat_bunny_painting/cat_bunny_painting.jpg"> <a href="./assets/our_results/cat_bunny_painting/cat_bunny_painting.jpg"> <img  width="224" src="./assets/our_results/cat_bunny_painting/cat_bunny_painting.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/cat_bunny_painting/bears.jpg"> <a href="./assets/our_results/cat_bunny_painting/bears.jpg"> <img  width="224" src="./assets/our_results/cat_bunny_painting/bears.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/cat_bunny_painting/polygon.jpg"> <a href="./assets/our_results/cat_bunny_painting/polygon.jpg"> <img  width="224" src="./assets/our_results/cat_bunny_painting/polygon.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/cat_bunny_painting/realistic.jpg"> <a href="./assets/our_results/cat_bunny_painting/realistic.jpg"> <img  width="224" src="./assets/our_results/cat_bunny_painting/realistic.jpg" /> </a> </a></th>
+                </tr>
+
+                <tr> <td><br /></td> </tr>
+
+                <tr>
+                    <th style="font-size: 16px">Input image</th>
+                    <th style="font-family: Chalkduster">"a photo of a golden sculpture in a temple"</th>
+                    <th style="font-family: Chalkduster">"a photo of a wooden statue"</th>
+                    <th style="font-family: Chalkduster">"a photo of a silver robot"</th>
+                </tr>
+                <tr>
+                    <th><a href="./assets/our_results/man_meditation/meditation.jpg"> <a href="./assets/our_results/man_meditation/meditation.jpg"> <img  width="224" src="./assets/our_results/man_meditation/meditation.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/man_meditation/golden_statue.jpg"> <a href="./assets/our_results/man_meditation/golden_statue.jpg"> <img  width="224" src="./assets/our_results/man_meditation/golden_statue.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/man_meditation/wooden_statue.jpg"> <a href="./assets/our_results/man_meditation/wooden_statue.jpg"> <img  width="224" src="./assets/our_results/man_meditation/wooden_statue.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/man_meditation/robot.jpg"> <a href="./assets/our_results/man_meditation/robot.jpg"> <img  width="224" src="./assets/our_results/man_meditation/robot.jpg" /> </a> </a></th>
+                </tr>
+
+                <tr> <td><br /></td> </tr>
+
+
+                <tr>
+                    <th style="font-size: 16px">Input image</th>
+                    <th style="font-family: Chalkduster">"a photo of a white wedding cake"</th>
+                    <th style="font-family: Chalkduster">"a photo of a skyscraper"</th>
+                    <th style="font-family: Chalkduster">"a photo of a tower in snow"</th>
+                </tr>
+                <tr>
+                    <th><a href="./assets/our_results/stones/stones.jpg"> <a href="./assets/our_results/stones/stones.jpg"> <img  width="224" src="./assets/our_results/stones/stones.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/stones/wedding_cake.jpg"> <a href="./assets/our_results/stones/wedding_cake.jpg"> <img  width="224" src="./assets/our_results/stones/wedding_cake.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/stones/skyscraper.jpg"> <a href="./assets/our_results/stones/skyscraper.jpg"> <img  width="224" src="./assets/our_results/stones/skyscraper.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/stones/tower_in_snow.jpg"> <a href="./assets/our_results/stones/tower_in_snow.jpg"> <img  width="224" src="./assets/our_results/stones/tower_in_snow.jpg" /> </a> </a></th>
+                </tr>
+
+                <tr> <td><br /></td> </tr>
+
+
+                <tr>
+                    <th style="font-size: 16px">Input image</th>
+                    <th style="font-family: Chalkduster">"a photo of a sparrow"</th>
+                    <th style="font-family: Chalkduster">"a photo of a hummingbird in a forest"</th>
+                    <th style="font-family: Chalkduster">"a photo of an eagle"</th>
+                </tr>
+                <tr>
+                    <th><a href="./assets/our_results/bird_silhouette/bird_branch_sil.jpg"> <a href="./assets/our_results/bird_silhouette/bird_branch_sil.jpg"> <img  width="224" src="./assets/our_results/bird_silhouette/bird_branch_sil.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/bird_silhouette/sparrow.jpg"> <a href="./assets/our_results/bird_silhouette/sparrow.jpg"> <img  width="224" src="./assets/our_results/bird_silhouette/sparrow.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/bird_silhouette/hummingbird.jpg"> <a href="./assets/our_results/bird_silhouette/hummingbird.jpg"> <img  width="224" src="./assets/our_results/bird_silhouette/hummingbird.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/bird_silhouette/eagle.jpg"> <a href="./assets/our_results/bird_silhouette/eagle.jpg"> <img  width="224" src="./assets/our_results/bird_silhouette/eagle.jpg" /> </a> </a></th>
+                </tr>
+
+                <tr> <td><br /></td> </tr>
+
+                <tr> <td colspan="4"><br />
+                <p align="left">Wild TI2I - Generated images</p>
+                <hr>
+            </td> 
+                </tr>
+                <tr>
+                    <th style="font-size: 16px">Input image</th>
+                    <th style="font-family: Chalkduster">"a photo of a zebra in the snow"</th>
+                    <th style="font-family: Chalkduster">"a photo of a husky on the grass"</th>
+                    <th style="font-family: Chalkduster">"a photo of a blue horse toy in playroom"</th>
+                </tr>
+                <tr>
+                    <th><a href="./assets/our_results/horse_mud/hors.jpg"> <a href="./assets/our_results/horse_mud/hors.jpg"> <img  width="224" src="./assets/our_results/horse_mud/hors.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/horse_mud/zebra.jpg"> <a href="./assets/our_results/horse_mud/zebra.jpg"> <img  width="224" src="./assets/our_results/horse_mud/zebra.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/horse_mud/husky.jpg"> <a href="./assets/our_results/horse_mud/husky.jpg"> <img  width="224" src="./assets/our_results/horse_mud/husky.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/horse_mud/toy.jpg"> <a href="./assets/our_results/horse_mud/toy.jpg"> <img  width="224" src="./assets/our_results/horse_mud/toy.jpg" /> </a> </a></th>
+                </tr>
+
+                <tr> <td><br /></td> </tr>
+
+                <tr>
+                    <th style="font-size: 16px">Input image</th>
+                    <th style="font-family: Chalkduster">"a photo of a robot in superhero pose"</th>
+                    <th style="font-family: Chalkduster">"a photo of a wooden statue in superhero pose"</th>
+                    <th style="font-family: Chalkduster">"a sketch of a panda in superhero pose"</th>
+                </tr>
+                <tr>
+                    <th><a href="./assets/our_results/spiderman_gen/spiderman.jpg"> <a href="./assets/our_results/spiderman_gen/spiderman.jpg"> <img  width="224" src="./assets/our_results/spiderman_gen/spiderman.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/spiderman_gen/robot.jpg"> <a href="./assets/our_results/spiderman_gen/robot.jpg"> <img  width="224" src="./assets/our_results/spiderman_gen/robot.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/spiderman_gen/wooden.jpg"> <a href="./assets/our_results/spiderman_gen/wooden.jpg"> <img  width="224" src="./assets/our_results/spiderman_gen/wooden.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/spiderman_gen/panda.jpg"> <a href="./assets/our_results/spiderman_gen/panda.jpg"> <img  width="224" src="./assets/our_results/spiderman_gen/panda.jpg" /> </a> </a></th>
+                </tr>
+
+                <tr> <td><br /></td> </tr>
+
+                <tr>
+                    <th style="font-size: 16px">Input image</th>
+                    <th style="font-family: Chalkduster">"a photo of a green car made of wood"</th>
+                    <th style="font-family: Chalkduster">"a photo of a sculpture of a car made of steel in museum"</th>
+                    <th style="font-family: Chalkduster">"a photo of a car made of ice on the grass"</th>
+                </tr>
+                <tr>
+                    <th><a href="./assets/our_results/sand_car/sand_car.jpg"> <a href="./assets/our_results/sand_car/sand_car.jpg"> <img  width="224" src="./assets/our_results/sand_car/sand_car.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/sand_car/wooden.jpg"> <a href="./assets/our_results/sand_car/wooden.jpg"> <img  width="224" src="./assets/our_results/sand_car/wooden.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/sand_car/silver.jpg"> <a href="./assets/our_results/sand_car/silver.jpg"> <img  width="224" src="./assets/our_results/sand_car/silver.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/sand_car/ice.jpg"> <a href="./assets/our_results/sand_car/ice.jpg"> <img  width="224" src="./assets/our_results/sand_car/ice.jpg" /> </a> </a></th>
+                </tr>
+
+                <tr> <td><br /></td> </tr>
+
+                <tr>
+                    <th style="font-size: 16px">Input image</th>
+                    <th style="font-family: Chalkduster">"a realistic image of a song bird in a forest"</th>
+                    <th style="font-family: Chalkduster">"a pixar animation of a bird"</th>
+                    <th style="font-family: Chalkduster">"a realistic image of a hummingbird in the snow"</th>
+                </tr>
+                <tr>
+                    <th><a href="./assets/our_results/bird_silhouette_gen/bird_sil.jpg"> <a href="./assets/our_results/bird_silhouette_gen/bird_sil.jpg"> <img  width="224" src="./assets/our_results/bird_silhouette_gen/bird_sil.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/bird_silhouette_gen/song_bird.jpg"> <a href="./assets/our_results/bird_silhouette_gen/song_bird.jpg"> <img  width="224" src="./assets/our_results/bird_silhouette_gen/song_bird.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/bird_silhouette_gen/pixar.jpg"> <a href="./assets/our_results/bird_silhouette_gen/pixar.jpg"> <img  width="224" src="./assets/our_results/bird_silhouette_gen/pixar.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/bird_silhouette_gen/hummingbird.jpg"> <a href="./assets/our_results/bird_silhouette_gen/hummingbird.jpg"> <img  width="224" src="./assets/our_results/bird_silhouette_gen/hummingbird.jpg" /> </a> </a></th>
+                </tr>
+
+                <tr> <td><br /></td> </tr>
+
+                <tr>
+                    <th style="font-size: 16px">Input image</th>
+                    <th style="font-family: Chalkduster">"a photo of three wolves in the snow"</th>
+                    <th style="font-family: Chalkduster">"a cartoon of three lions sitting on the grass"</th>
+                    <th style="font-family: Chalkduster">"a painting of three white robots"</th>
+                </tr>
+                <tr>
+                    <th><a href="./assets/our_results/three_foxes/foxes.jpg"> <a href="./assets/our_results/three_foxes/foxes.jpg"> <img  width="224" src="./assets/our_results/three_foxes/foxes.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/three_foxes/wolves.jpg"> <a href="./assets/our_results/three_foxes/wolves.jpg"> <img  width="224" src="./assets/our_results/three_foxes/wolves.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/three_foxes/lions_cartoon.jpg"> <a href="./assets/our_results/three_foxes/lions_cartoon.jpg"> <img  width="224" src="./assets/our_results/three_foxes/lions_cartoon.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/three_foxes/robots.jpg"> <a href="./assets/our_results/three_foxes/robots.jpg"> <img  width="224" src="./assets/our_results/three_foxes/robots.jpg" /> </a> </a></th>
+                </tr>
+
+                <tr> <td><br /></td> </tr>
+
+                <tr>
+                    <th style="font-size: 16px">Input image</th>
+                    <th style="font-family: Chalkduster">"a photo of a cute teddy bear sitting on the grass"</th>
+                    <th style="font-family: Chalkduster">"a photo of a bronze sculpture sitting in the snow"</th>
+                    <th style="font-family: Chalkduster">"a photo of a red bunny robot"</th>
+                </tr>
+                <tr>
+                    <th><a href="./assets/our_results/bunny_doll/doll.jpg"> <a href="./assets/our_results/bunny_doll/doll.jpg"> <img  width="224" src="./assets/our_results/bunny_doll/doll.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/bunny_doll/teddy.jpg"> <a href="./assets/our_results/bunny_doll/teddy.jpg"> <img  width="224" src="./assets/our_results/bunny_doll/teddy.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/bunny_doll/bronze.jpg"> <a href="./assets/our_results/bunny_doll/bronze.jpg"> <img  width="224" src="./assets/our_results/bunny_doll/bronze.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/bunny_doll/robot.jpg"> <a href="./assets/our_results/bunny_doll/robot.jpg"> <img  width="224" src="./assets/our_results/bunny_doll/robot.jpg" /> </a> </a></th>
+                </tr>
+
+                <tr> <td><br /></td> </tr>
+            </tr>
+            <tr> <td colspan="4"><br />
+                <p align="left"> ImageNet-R TI2I (Real images) </p>
+                <hr>
+            </td> 
+            </tr>
+
+                <tr>
+                    <th style="font-size: 16px">Input image</th>
+                    <th style="font-family: Chalkduster">"a sculpture of a hummingbird"</th>
+                    <th style="font-family: Chalkduster">"an image of a hummingbird"</th>
+                    <th style="font-family: Chalkduster">"a sketch of a parrot"</th>
+
+                <tr>
+                    <th><a href="./assets/our_results/hummingbird_origami/hummingbird_origami.jpg"> <a href="./assets/our_results/hummingbird_origami/hummingbird_origami.jpg"> <img  width="224" src="./assets/our_results/hummingbird_origami/hummingbird_origami.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/hummingbird_origami/sculpture.jpg"> <a href="./assets/our_results/hummingbird_origami/sculpture.jpg"> <img  width="224" src="./assets/our_results/hummingbird_origami/sculpture.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/hummingbird_origami/hummingbird_image.jpg"> <a href="./assets/our_results/hummingbird_origami/hummingbird_image.jpg"> <img  width="224" src="./assets/our_results/hummingbird_origami/hummingbird_image.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/hummingbird_origami/parrot_sketch.jpg"> <a href="./assets/our_results/hummingbird_origami/parrot_sketch.jpg"> <img  width="224" src="./assets/our_results/hummingbird_origami/parrot_sketch.jpg" /> </a> </a></th>
+                </tr>
+
+                <tr> <td><br /></td> </tr>
+
+
+                <tr>
+                    <th style="font-size: 16px">Input image</th>
+                    <th style="font-family: Chalkduster">"an embroidery of a pink jeep"</th>
+                    <th style="font-family: Chalkduster">"a photo of a hippie colorful jeep"</th>
+                    <th style="font-family: Chalkduster">"a cartoon of a jeep"</th>
+                </tr>
+                <tr>
+                    <th><a href="./assets/our_results/jeep/jeep_toy.jpg"> <a href="./assets/our_results/jeep/jeep_toy.jpg"> <img  width="224" src="./assets/our_results/jeep/jeep_toy.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/jeep/jeep_pink_emb.jpg"> <a href="./assets/our_results/jeep/jeep_pink_emb.jpg"> <img  width="224" src="./assets/our_results/jeep/jeep_pink_emb.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/jeep/jeep_hippie.jpg"> <a href="./assets/our_results/jeep/jeep_hippie.jpg"> <img  width="224" src="./assets/our_results/jeep/jeep_hippie.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/jeep/jeep_cartoon.jpg"> <a href="./assets/our_results/jeep/jeep_cartoon.jpg"> <img  width="224" src="./assets/our_results/jeep/jeep_cartoon.jpg" /> </a> </a></th>
+                </tr>
+
+                <tr> <td><br /></td> </tr>
+
+
+                <tr>
+                    <th style="font-size: 16px">Input image</th>
+                    <th style="font-family: Chalkduster">"an image of a castle"</th>
+                    <th style="font-family: Chalkduster">"an embroidery of a temple"</th>
+                    <th style="font-family: Chalkduster">"a photo of a church"</th>
+                </tr>
+                <tr>
+                    <th><a href="./assets/our_results/castle_drawing/castle_drawing.jpg"> <a href="./assets/our_results/castle_drawing/castle_drawing.jpg"> <img  width="224" src="./assets/our_results/castle_drawing/castle_drawing.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/castle_drawing/castle_image.jpg"> <a href="./assets/our_results/castle_drawing/castle_image.jpg"> <img  width="224" src="./assets/our_results/castle_drawing/castle_image.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/castle_drawing/castle_emb.jpg"> <a href="./assets/our_results/castle_drawing/castle_emb.jpg"> <img  width="224" src="./assets/our_results/castle_drawing/castle_emb.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/castle_drawing/church.jpg"> <a href="./assets/our_results/castle_drawing/church.jpg"> <img  width="224" src="./assets/our_results/castle_drawing/church.jpg" /> </a> </a></th>
+                </tr>
+
+                <tr> <td><br /></td> </tr>
+
+
+                <tr>
+                    <th style="font-size: 16px">Input image</th>
+                    <th style="font-family: Chalkduster">"a toy of a panda"</th>
+                    <th style="font-family: Chalkduster">"an embroidery of a bear"</th>
+                    <th style="font-family: Chalkduster">"a graffiti of a leopard"</th>
+                </tr>
+                <tr>
+                    <th><a href="./assets/our_results/panda_cartoon/panda_cartoon.jpg"> <a href="./assets/our_results/panda_cartoon/panda_cartoon.jpg"> <img  width="224" src="./assets/our_results/panda_cartoon/panda_cartoon.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/panda_cartoon/panda_toy.jpg"> <a href="./assets/our_results/panda_cartoon/panda_toy.jpg"> <img  width="224" src="./assets/our_results/panda_cartoon/panda_toy.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/panda_cartoon/bear_emb.jpg"> <a href="./assets/our_results/panda_cartoon/bear_emb.jpg"> <img  width="224" src="./assets/our_results/panda_cartoon/bear_emb.jpg" /> </a> </a></th>
+                    <th><a href="./assets/our_results/panda_cartoon/leopard.jpg"> <a href="./assets/our_results/panda_cartoon/leopard.jpg"> <img  width="224" src="./assets/our_results/panda_cartoon/leopard.jpg" /> </a> </a></th>
+                </tr>
+		</tbody>
+	</table>
+    <!------------------ END SECTION ------------------>
+
+
+
+
+  <!------------------ BEGIN SECTION ------------------>
+  <p>&nbsp;</p>
+  <hr>
+	
+  <h2 id="comparisons_baselines_container" align="left"><a name="image-results" id="image-results"></a>Comparisons to Baselines</h2>
+  <p align="left"> Existing methods of text-guided image translation suffer from a trade-off between structure preservation and target text fidelity.
+    <ul>
+        <li>SDEdit (<a href="#ref-sdedit">[1]</a>) suffers from appearance leakage when preserving the structure and deviates from the structure when using a higher noising step for appearance deviation.</li> 
+        <li>Prompt-to-Prompt (<a href="#ref-p2p">[2]</a>) achieves text fidelity but does not preserve the details in the structure of the guidance image.</li> 
+        <li>DiffuseIT (<a href="#ref-diffuseit">[3]</a>) preserve the guidance image structure but fails to fulfill the target text.</li> 
+        <li>VQ-GAN + CLIP (<a href="#ref-vqclip">[4]</a>) fails to preserve the original image structure and produces artifacts.</li> 
+</ul>
+    Our method manages to preserve the structure of the guidance image while fulfilling the target text. </p>
+
+  <table  width="1200" align="center">
+    <tbody>
+        <!-- <th>A</th>
+        <th>B</th>
+        <th>C</th> -->
+        <br/>
+        <tr> <td colspan="8"><br />
+          <p align="left"> Wild TI2I (Generated images) </p>
+          <hr>
+      </td> 
+          </tr>
+      <tr>
+        <tr>
+            <th style="font-family: Chalkduster">"a photo of rubber ducks walking on the street"</th>
+            <th style="font-size: 16px">Ours</th>
+            <th style="font-size: 16px">Prompt-to-Prompt</th>
+            <th style="font-size: 16px">DiffuseIT</th>
+            <th style="font-size: 16px">SDEdit 0.6</th>
+            <th style="font-size: 16px">SDEdit 0.75</th>
+            <th style="font-size: 16px">SDEdit 0.85</th>
+            <th style="font-size: 16px">VQ-GAN + CLIP</th>
+        </tr>
+
+        <tr>
+            <th><a href="./assets/comparisons/green_ducks/green_ducks.jpg"> <a href="./assets/comparisons/green_ducks/green_ducks.jpg"> <img  class="comparison-img" width="224" src="./assets/comparisons/green_ducks/green_ducks.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/green_ducks/ours.jpg"> <a href="./assets/comparisons/green_ducks/ours.jpg"> <img  class="comparison-img" width="224" src="./assets/comparisons/green_ducks/ours.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/green_ducks/p2p.jpg"> <a href="./assets/comparisons/green_ducks/p2p.jpg"> <img  class="comparison-img" width="224" src="./assets/comparisons/green_ducks/p2p.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/green_ducks/diffuseit.jpg"> <a href="./assets/comparisons/green_ducks/diffuseit.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/green_ducks/diffuseit.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/green_ducks/ldm_img2img_0.6_7.5.jpg"> <a href="./assets/comparisons/green_ducks/ldm_img2img_0.6_7.5.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/green_ducks/ldm_img2img_0.6_7.5.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/green_ducks/ldm_img2img_0.75_7.5.jpg"> <a href="./assets/comparisons/green_ducks/ldm_img2img_0.75_7.5.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/green_ducks/ldm_img2img_0.75_7.5.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/green_ducks/ldm_img2img_0.85_7.5.jpg"> <a href="./assets/comparisons/green_ducks/ldm_img2img_0.85_7.5.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/green_ducks/ldm_img2img_0.85_7.5.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/green_ducks/vqclip.jpg"> <a href="./assets/comparisons/green_ducks/vqclip.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/green_ducks/vqclip.jpg" /> </a> </a></th>
+        </tr>
+        
+        <tr> <td><br /></td> </tr>
+
+        <tr>
+            <th style="font-family: Chalkduster">"a photo of a golden robot"</th>
+            <th style="font-size: 16px">Ours</th>
+            <th style="font-size: 16px">Prompt-to-Prompt</th>
+            <th style="font-size: 16px">DiffuseIT</th>
+            <th style="font-size: 16px">SDEdit 0.6</th>
+            <th style="font-size: 16px">SDEdit 0.75</th>
+            <th style="font-size: 16px">SDEdit 0.85</th>
+            <th style="font-size: 16px">VQ-GAN + CLIP</th>
+        </tr>
+
+
+        <tr>
+            <th><a href="./assets/comparisons/mouse_painting/mouse.jpg"> <a href="./assets/comparisons/mouse_painting/mouse.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/mouse_painting/mouse.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/mouse_painting/ours.jpg"> <a href="./assets/comparisons/mouse_painting/ours.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/mouse_painting/ours.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/mouse_painting/p2p.jpg"> <a href="./assets/comparisons/mouse_painting/p2p.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/mouse_painting/p2p.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/mouse_painting/diffuseit.jpg"> <a href="./assets/comparisons/mouse_painting/diffuseit.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/mouse_painting/diffuseit.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/mouse_painting/ldm_img2img_0.6_7.5.jpg"> <a href="./assets/comparisons/mouse_painting/ldm_img2img_0.6_7.5.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/mouse_painting/ldm_img2img_0.6_7.5.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/mouse_painting/ldm_img2img_0.75_7.5.jpg"> <a href="./assets/comparisons/mouse_painting/ldm_img2img_0.75_7.5.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/mouse_painting/ldm_img2img_0.75_7.5.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/mouse_painting/ldm_img2img_0.85_7.5.jpg"> <a href="./assets/comparisons/mouse_painting/ldm_img2img_0.85_7.5.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/mouse_painting/ldm_img2img_0.85_7.5.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/mouse_painting/vqclip.jpg"> <a href="./assets/comparisons/mouse_painting/vqclip.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/mouse_painting/vqclip.jpg" /> </a> </a></th>
+        </tr>
+
+        <tr> <td><br /></td> </tr>
+
+        <tr>
+            <th style="font-family: Chalkduster">"a photo of a car made of ice"</th>
+            <th style="font-size: 16px">Ours</th>
+            <th style="font-size: 16px">Prompt-to-Prompt</th>
+            <th style="font-size: 16px">DiffuseIT</th>
+            <th style="font-size: 16px">SDEdit 0.6</th>
+            <th style="font-size: 16px">SDEdit 0.75</th>
+            <th style="font-size: 16px">SDEdit 0.85</th>
+            <th style="font-size: 16px">VQ-GAN + CLIP</th>
+        </tr>
+
+
+        <tr>
+            <th><a href="./assets/comparisons/sand_car/car.jpg"> <a href="./assets/comparisons/sand_car/car.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/sand_car/car.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/sand_car/ours.jpg"> <a href="./assets/comparisons/sand_car/ours.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/sand_car/ours.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/sand_car/p2p.jpg"> <a href="./assets/comparisons/sand_car/p2p.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/sand_car/p2p.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/sand_car/diffuseit.jpg"> <a href="./assets/comparisons/sand_car/diffuseit.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/sand_car/diffuseit.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/sand_car/ldm_img2img_0.6_7.5.jpg"> <a href="./assets/comparisons/sand_car/ldm_img2img_0.6_7.5.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/sand_car/ldm_img2img_0.6_7.5.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/sand_car/ldm_img2img_0.75_7.5.jpg"> <a href="./assets/comparisons/sand_car/ldm_img2img_0.75_7.5.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/sand_car/ldm_img2img_0.75_7.5.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/sand_car/ldm_img2img_0.85_7.5.jpg"> <a href="./assets/comparisons/sand_car/ldm_img2img_0.85_7.5.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/sand_car/ldm_img2img_0.85_7.5.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/sand_car/vqclip.jpg"> <a href="./assets/comparisons/sand_car/vqclip.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/sand_car/vqclip.jpg" /> </a> </a></th>
+        </tr>
+
+        <tr> <td><br /></td> </tr>
+        <tr> <td colspan="8"><br />
+            <p align="left"> Wild-R TI2I (Real images) </p>
+            <hr>
+        </td> 
+            </tr>
+        <tr>
+        <tr>
+            <th style="font-family: Chalkduster">"a photo of a white wedding cake"</th>
+            <th style="font-size: 16px">Ours</th>
+            <th style="font-size: 16px">Prompt-to-Prompt</th>
+            <th style="font-size: 16px">DiffuseIT</th>
+            <th style="font-size: 16px">SDEdit 0.6</th>
+            <th style="font-size: 16px">SDEdit 0.75</th>
+            <th style="font-size: 16px">SDEdit 0.85</th>
+            <th style="font-size: 16px">VQ-GAN + CLIP</th>
+        </tr>
+
+
+        <tr>
+            <th><a href="./assets/comparisons/stones/stones.jpg"> <a href="./assets/comparisons/stones/stones.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/stones/stones.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/stones/ours.jpg"> <a href="./assets/comparisons/stones/ours.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/stones/ours.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/stones/p2p.jpg"> <a href="./assets/comparisons/stones/p2p.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/stones/p2p.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/stones/diffuseit.jpg"> <a href="./assets/comparisons/stones/diffuseit.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/stones/diffuseit.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/stones/ldm_img2img_0.6_7.5.jpg"> <a href="./assets/comparisons/stones/ldm_img2img_0.6_7.5.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/stones/ldm_img2img_0.6_7.5.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/stones/ldm_img2img_0.75_7.5.jpg"> <a href="./assets/comparisons/stones/ldm_img2img_0.75_7.5.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/stones/ldm_img2img_0.75_7.5.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/stones/ldm_img2img_0.85_7.5.jpg"> <a href="./assets/comparisons/stones/ldm_img2img_0.85_7.5.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/stones/ldm_img2img_0.85_7.5.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/stones/vqclip.jpg"> <a href="./assets/comparisons/stones/vqclip.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/stones/vqclip.jpg" /> </a> </a></th>
+        </tr>
+
+        <tr> <td><br /></td> </tr>
+
+        <tr>
+            <th style="font-family: Chalkduster">"a photo of a silver robot walking on the moon"</th>
+            <th style="font-size: 16px">Ours</th>
+            <th style="font-size: 16px">Prompt-to-Prompt</th>
+            <th style="font-size: 16px">DiffuseIT</th>
+            <th style="font-size: 16px">SDEdit 0.6</th>
+            <th style="font-size: 16px">SDEdit 0.75</th>
+            <th style="font-size: 16px">SDEdit 0.85</th>
+            <th style="font-size: 16px">VQ-GAN + CLIP</th>
+        </tr>
+
+
+        <tr>
+          <th><a href="./assets/comparisons/bear_doll/bear_doll.jpg"> <a href="./assets/comparisons/bear_doll/bear_doll.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/bear_doll/bear_doll.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/bear_doll/ours.jpg"> <a href="./assets/comparisons/bear_doll/ours.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/bear_doll/ours.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/bear_doll/p2p.jpg"> <a href="./assets/comparisons/bear_doll/p2p.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/bear_doll/p2p.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/bear_doll/diffuseit.jpg"> <a href="./assets/comparisons/bear_doll/diffuseit.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/bear_doll/diffuseit.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/bear_doll/ldm_img2img_0.6_7.5.jpg"> <a href="./assets/comparisons/bear_doll/ldm_img2img_0.6_7.5.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/bear_doll/ldm_img2img_0.6_7.5.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/bear_doll/ldm_img2img_0.75_7.5.jpg"> <a href="./assets/comparisons/bear_doll/ldm_img2img_0.75_7.5.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/bear_doll/ldm_img2img_0.75_7.5.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/bear_doll/ldm_img2img_0.85_7.5.jpg"> <a href="./assets/comparisons/bear_doll/ldm_img2img_0.85_7.5.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/bear_doll/ldm_img2img_0.85_7.5.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/bear_doll/vqclip.jpg"> <a href="./assets/comparisons/bear_doll/vqclip.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/bear_doll/vqclip.jpg" /> </a> </a></th>
+        </tr>
+
+        <tr> <td><br /></td> </tr>
+        <tr> <td colspan="8"><br />
+            <p align="left"> ImageNet-R TI2I (Real images) </p>
+            <hr>
+        </td> 
+            </tr>
+        <tr>
+        <tr>
+            <th style="font-family: Chalkduster">"a photo of a pizza"</th>
+            <th style="font-size: 16px">Ours</th>
+            <th style="font-size: 16px">Prompt-to-Prompt</th>
+            <th style="font-size: 16px">DiffuseIT</th>
+            <th style="font-size: 16px">SDEdit 0.6</th>
+            <th style="font-size: 16px">SDEdit 0.75</th>
+            <th style="font-size: 16px">SDEdit 0.85</th>
+            <th style="font-size: 16px">VQ-GAN + CLIP</th>
+        </tr>
+
+
+        <tr>
+          <th><a href="./assets/comparisons/pizza_sketch/pizza.jpg"> <a href="./assets/comparisons/pizza_sketch/pizza.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/pizza_sketch/pizza.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/pizza_sketch/ours.jpg"> <a href="./assets/comparisons/pizza_sketch/ours.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/pizza_sketch/ours.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/pizza_sketch/p2p.jpg"> <a href="./assets/comparisons/pizza_sketch/p2p.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/pizza_sketch/p2p.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/pizza_sketch/diffuseit.jpg"> <a href="./assets/comparisons/pizza_sketch/diffuseit.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/pizza_sketch/diffuseit.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/pizza_sketch/ldm_img2img_0.6_7.5.jpg"> <a href="./assets/comparisons/pizza_sketch/ldm_img2img_0.6_7.5.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/pizza_sketch/ldm_img2img_0.6_7.5.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/pizza_sketch/ldm_img2img_0.75_7.5.jpg"> <a href="./assets/comparisons/pizza_sketch/ldm_img2img_0.75_7.5.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/pizza_sketch/ldm_img2img_0.75_7.5.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/pizza_sketch/ldm_img2img_0.85_7.5.jpg"> <a href="./assets/comparisons/pizza_sketch/ldm_img2img_0.85_7.5.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/pizza_sketch/ldm_img2img_0.85_7.5.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/pizza_sketch/vqclip.jpg"> <a href="./assets/comparisons/pizza_sketch/vqclip.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/pizza_sketch/vqclip.jpg" /> </a> </a></th>
+        </tr>
+
+        <tr> <td><br /></td> </tr>
+
+        <tr>
+            <th style="font-family: Chalkduster">"an origami of a panda"</th>
+            <th style="font-size: 16px">Ours</th>
+            <th style="font-size: 16px">Prompt-to-Prompt</th>
+            <th style="font-size: 16px">DiffuseIT</th>
+            <th style="font-size: 16px">SDEdit 0.6</th>
+            <th style="font-size: 16px">SDEdit 0.75</th>
+            <th style="font-size: 16px">SDEdit 0.85</th>
+            <th style="font-size: 16px">VQ-GAN + CLIP</th>
+        </tr>
+
+
+        <tr>
+          <th><a href="./assets/comparisons/bear_sculpture/bear.jpg"> <a href="./assets/comparisons/bear_sculpture/bear.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/bear_sculpture/bear.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/bear_sculpture/ours.jpg"> <a href="./assets/comparisons/bear_sculpture/ours.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/bear_sculpture/ours.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/bear_sculpture/p2p.jpg"> <a href="./assets/comparisons/bear_sculpture/p2p.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/bear_sculpture/p2p.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/bear_sculpture/diffuseit.jpg"> <a href="./assets/comparisons/bear_sculpture/diffuseit.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/bear_sculpture/diffuseit.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/bear_sculpture/ldm_img2img_0.6_7.5.jpg"> <a href="./assets/comparisons/bear_sculpture/ldm_img2img_0.6_7.5.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/bear_sculpture/ldm_img2img_0.6_7.5.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/bear_sculpture/ldm_img2img_0.75_7.5.jpg"> <a href="./assets/comparisons/bear_sculpture/ldm_img2img_0.75_7.5.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/bear_sculpture/ldm_img2img_0.75_7.5.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/bear_sculpture/ldm_img2img_0.85_7.5.jpg"> <a href="./assets/comparisons/bear_sculpture/ldm_img2img_0.85_7.5.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/bear_sculpture/ldm_img2img_0.85_7.5.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/bear_sculpture/vqclip.jpg"> <a href="./assets/comparisons/bear_sculpture/vqclip.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/bear_sculpture/vqclip.jpg" /> </a> </a></th>
+        </tr>
+
+        <tr> <td><br /></td> </tr>
+
+        <tr>
+            <th style="font-family: Chalkduster">"a tattoo of a hummingbird"</th>
+            <th style="font-size: 16px">Ours</th>
+            <th style="font-size: 16px">Prompt-to-Prompt</th>
+            <th style="font-size: 16px">DiffuseIT</th>
+            <th style="font-size: 16px">SDEdit 0.6</th>
+            <th style="font-size: 16px">SDEdit 0.75</th>
+            <th style="font-size: 16px">SDEdit 0.85</th>
+            <th style="font-size: 16px">VQ-GAN + CLIP</th>
+        </tr>
+
+
+        <tr>
+          <th><a href="./assets/comparisons/birds_cartoon/birds.jpg"> <a href="./assets/comparisons/birds_cartoon/birds.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/birds_cartoon/birds.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/birds_cartoon/ours.jpg"> <a href="./assets/comparisons/birds_cartoon/ours.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/birds_cartoon/ours.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/birds_cartoon/p2p.jpg"> <a href="./assets/comparisons/birds_cartoon/p2p.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/birds_cartoon/p2p.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/birds_cartoon/diffuseit.jpg"> <a href="./assets/comparisons/birds_cartoon/diffuseit.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/birds_cartoon/diffuseit.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/birds_cartoon/ldm_img2img_0.6_7.5.jpg"> <a href="./assets/comparisons/birds_cartoon/ldm_img2img_0.6_7.5.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/birds_cartoon/ldm_img2img_0.6_7.5.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/birds_cartoon/ldm_img2img_0.75_7.5.jpg"> <a href="./assets/comparisons/birds_cartoon/ldm_img2img_0.75_7.5.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/birds_cartoon/ldm_img2img_0.75_7.5.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/birds_cartoon/ldm_img2img_0.85_7.5.jpg"> <a href="./assets/comparisons/birds_cartoon/ldm_img2img_0.85_7.5.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/birds_cartoon/ldm_img2img_0.85_7.5.jpg" /> </a> </a></th>
+            <th><a href="./assets/comparisons/birds_cartoon/vqclip.jpg"> <a href="./assets/comparisons/birds_cartoon/vqclip.jpg"> <img  class="comparison-img"width="224" src="./assets/comparisons/birds_cartoon/vqclip.jpg" /> </a> </a></th>
+        </tr>
+    </tbody>
+</table>
+<!------------------ END SECTION ------------------>
+
+
+
+
+
+  <!------------------ BEGIN SECTION ------------------>
+  <p>&nbsp;</p>
+  <hr>
+	
+  <h2 id="additional_qual_comp" align="left"><a name="image-results" id="image-results"></a>Additional Qualitative Comparisons</h2>
+  <p align="left">We present additional qualitative comparisons to Text2LIVE, DiffusionCLIP and FlexIT. 
+    These methods either fail to deviate from the guidance image or create undesired artifacts.
+    We note that Text2LIVE is limited to performing only textural edits and cannot apply structural changes necessary to convey the target edit (e.g. dog to bear, church to asian tower).
+    Moreover, Text2LIVE does not leverage a strong generative prior, hence producing low visual quality.
+  </p>
+  <br/>
+
+  <table  width="1200" align="center">
+    <tbody>
+        <!-- <th>A</th>
+        <th>B</th>
+        <th>C</th> -->
+        <tr>
+            <th style="font-family: Chalkduster">"a photo of a yorkshire terrier"</th>
+            <th style="font-size: 16px">Text2LIVE (<a href="#ref-t2l">[5]</a>)</th>
+            <th style="font-size: 16px">DiffusionCLIP (<a href="#ref-dclip">[6]</a>)</th>
+            <th style="font-size: 16px">FlexIT (<a href="#ref-flexit">[7]</a>)</th>
+            <th style="font-size: 16px">Ours</th>
+        </tr>
+        <tr>
+            <th><a href="./assets/afhq_comparison/afhq_dog_3.jpg"> <a href="./assets/afhq_comparison/afhq_dog_3.jpg"> <img  width="224" src="./assets/afhq_comparison/afhq_dog_3.jpg" /> </a> </a></th>
+            <th><a href="./assets/afhq_comparison/afhq_dog_3_terrier_t2l.jpg"> <a href="./assets/afhq_comparison/afhq_dog_3_terrier_t2l.jpg"> <img  width="224" src="./assets/afhq_comparison/afhq_dog_3_terrier_t2l.jpg" /> </a> </a></th>
+            <th><a href="./assets/afhq_comparison/afhq_dog_3_terrier_dc.jpg"> <a href="./assets/afhq_comparison/afhq_dog_3_terrier_dc.jpg"> <img  width="224" src="./assets/afhq_comparison/afhq_dog_3_terrier_dc.jpg" /> </a> </a></th>
+            <th><a href="./assets/afhq_comparison/afhq_dog_3_terrier_flexit.jpg"> <a href="./assets/afhq_comparison/afhq_dog_3_terrier_flexit.jpg"> <img  width="224" src="./assets/afhq_comparison/afhq_dog_3_terrier_flexit.jpg" /> </a> </a></th>
+            <th><a href="./assets/afhq_comparison/afhq_dog_3_terrier_ours.jpg"> <a href="./assets/afhq_comparison/afhq_dog_3_terrier_ours.jpg"> <img  width="224" src="./assets/afhq_comparison/afhq_dog_3_terrier_ours.jpg" /> </a> </a></th>
+        </tr>
+
+        <tr> <td><br /></td> </tr>
+      
+        <tr>
+          <th style="font-family: Chalkduster">"a photo of a bear"</th>
+          <th style="font-size: 16px">Text2LIVE</th>
+          <th style="font-size: 16px">DiffusionCLIP</th>
+          <th style="font-size: 16px">FlexIT</th>
+          <th style="font-size: 16px">Ours</th>
+        </tr>
+        <tr>
+          <th><a href="./assets/afhq_comparison/afhq_dog_4.jpg"> <a href="./assets/afhq_comparison/afhq_dog_4.jpg"> <img  width="224" src="./assets/afhq_comparison/afhq_dog_4.jpg" /> </a> </a></th>
+          <th><a href="./assets/afhq_comparison/afhq_dog_4_bear_t2l.jpg"> <a href="./assets/afhq_comparison/afhq_dog_4_bear_t2l.jpg"> <img  width="224" src="./assets/afhq_comparison/afhq_dog_4_bear_t2l.jpg" /> </a> </a></th>
+          <th><a href="./assets/afhq_comparison/afhq_dog_4_bear_dc.jpg"> <a href="./assets/afhq_comparison/afhq_dog_4_bear_dc.jpg"> <img  width="224" src="./assets/afhq_comparison/afhq_dog_4_bear_dc.jpg" /> </a> </a></th>
+          <th><a href="./assets/afhq_comparison/afhq_dog_4_bear_flexit.jpg"> <a href="./assets/afhq_comparison/afhq_dog_4_bear_flexit.jpg"> <img  width="224" src="./assets/afhq_comparison/afhq_dog_4_bear_flexit.jpg" /> </a> </a></th>
+          <th><a href="./assets/afhq_comparison/afhq_dog_4_bear_ours.jpg"> <a href="./assets/afhq_comparison/afhq_dog_4_bear_ours.jpg"> <img  width="224" src="./assets/afhq_comparison/afhq_dog_4_bear_ours.jpg" /> </a> </a></th>
+        </tr>
+
+        <tr> <td><br /></td> </tr>
+
+        <tr>
+          <th style="font-family: Chalkduster">"a photo of Venom"</th>
+          <th style="font-size: 16px">Text2LIVE</th>
+          <th style="font-size: 16px">DiffusionCLIP</th>
+          <th style="font-size: 16px">FlexIT</th>
+          <th style="font-size: 16px">Ours</th>
+        </tr>
+        <tr>
+          <th><a href="./assets/afhq_comparison/afhq_dog_0.jpg"> <a href="./assets/afhq_comparison/afhq_dog_0.jpg"> <img  width="224" src="./assets/afhq_comparison/afhq_dog_0.jpg" /> </a> </a></th>
+          <th><a href="./assets/afhq_comparison/afhq_dog_0_venom_t2l.jpg"> <a href="./assets/afhq_comparison/afhq_dog_0_venom_t2l.jpg"> <img  width="224" src="./assets/afhq_comparison/afhq_dog_0_venom_t2l.jpg" /> </a> </a></th>
+          <th><a href="./assets/afhq_comparison/afhq_dog_0_venom_dc.jpg"> <a href="./assets/afhq_comparison/afhq_dog_0_venom_dc.jpg"> <img  width="224" src="./assets/afhq_comparison/afhq_dog_0_venom_dc.jpg" /> </a> </a></th>
+          <th><a href="./assets/afhq_comparison/afhq_dog_0_venom_flexit.jpg"> <a href="./assets/afhq_comparison/afhq_dog_0_venom_flexit.jpg"> <img  width="224" src="./assets/afhq_comparison/afhq_dog_0_venom_flexit.jpg" /> </a> </a></th>
+          <th><a href="./assets/afhq_comparison/afhq_dog_0_venom_ours.jpg"> <a href="./assets/afhq_comparison/afhq_dog_0_venom_ours.jpg"> <img  width="224" src="./assets/afhq_comparison/afhq_dog_0_venom_ours.jpg" /> </a> </a></th>
+        </tr>
+
+        <tr> <td><br /></td> </tr>
+
+        <tr>
+          <th style="font-family: Chalkduster">"a photo of a golden church"</th>
+          <th style="font-size: 16px">Text2LIVE</th>
+          <th style="font-size: 16px">DiffusionCLIP</th>
+          <th style="font-size: 16px">FlexIT</th>
+          <th style="font-size: 16px">Ours</th>
+        </tr>
+        <tr>
+          <th><a href="./assets/building_comp/building_2/building_2.jpg"> <a href="./assets/building_comp/building_2/building_2.jpg"> <img  width="224" src="./assets/building_comp/building_2/building_2.jpg" /> </a> </a></th>
+          <th><a href="./assets/building_comp/building_2/building_2_golden_t2l.jpg"> <a href="./assets/building_comp/building_2/building_2_golden_t2l.jpg"> <img  width="224" src="./assets/building_comp/building_2/building_2_golden_t2l.jpg" /> </a> </a></th>
+          <th><a href="./assets/building_comp/building_2/building_2_golden_dc.jpg"> <a href="./assets/building_comp/building_2/building_2_golden_dc.jpg"> <img  width="224" src="./assets/building_comp/building_2/building_2_golden_dc.jpg" /> </a> </a></th>
+          <th><a href="./assets/building_comp/building_2/building_2_golden_flexit.jpg"> <a href="./assets/building_comp/building_2/building_2_golden_flexit.jpg"> <img  width="224" src="./assets/building_comp/building_2/building_2_golden_flexit.jpg" /> </a> </a></th>
+          <th><a href="./assets/building_comp/building_2/building_2_golden_ours.jpg"> <a href="./assets/building_comp/building_2/building_2_golden_ours.jpg"> <img  width="224" src="./assets/building_comp/building_2/building_2_golden_ours.jpg" /> </a> </a></th>
+        </tr>
+
+        <tr> <td><br /></td> </tr>
+
+        <tr>
+          <th style="font-family: Chalkduster">"a photo of an Asian ancient tower"</th>
+          <th style="font-size: 16px">Text2LIVE</th>
+          <th style="font-size: 16px">DiffusionCLIP</th>
+          <th style="font-size: 16px">FlexIT</th>
+          <th style="font-size: 16px">Ours</th>
+        </tr>
+        <tr>
+          <th><a href="./assets/building_comp/building_3/building_3.jpg"> <a href="./assets/building_comp/building_3/building_3.jpg"> <img  width="224" src="./assets/building_comp/building_3/building_3.jpg" /> </a> </a></th>
+          <th><a href="./assets/building_comp/building_3/building_3_asian_t2l.jpg"> <a href="./assets/building_comp/building_3/building_3_asian_t2l.jpg"> <img  width="224" src="./assets/building_comp/building_3/building_3_asian_t2l.jpg" /> </a> </a></th>
+          <th><a href="./assets/building_comp/building_3/building_3_asian_dc.jpg"> <a href="./assets/building_comp/building_3/building_3_asian_dc.jpg"> <img  width="224" src="./assets/building_comp/building_3/building_3_asian_dc.jpg" /> </a> </a></th>
+          <th><a href="./assets/building_comp/building_3/building_3_asian_flexit.jpg"> <a href="./assets/building_comp/building_3/building_3_asian_flexit.jpg"> <img  width="224" src="./assets/building_comp/building_3/building_3_asian_flexit.jpg" /> </a> </a></th>
+          <th><a href="./assets/building_comp/building_3/building_3_asian_ours.jpg"> <a href="./assets/building_comp/building_3/building_3_asian_ours.jpg"> <img  width="224" src="./assets/building_comp/building_3/building_3_asian_ours.jpg" /> </a> </a></th>
+        </tr>
+
+        <tr> <td><br /></td> </tr>
+
+        <tr>
+          <th style="font-family: Chalkduster">"a photo of a wooden house"</th>
+          <th style="font-size: 16px">Text2LIVE</th>
+          <th style="font-size: 16px">DiffusionCLIP</th>
+          <th style="font-size: 16px">FlexIT</th>
+          <th style="font-size: 16px">Ours</th>
+        </tr>
+        <tr>
+          <th><a href="./assets/building_comp/building_4/building_4.jpg"> <a href="./assets/building_comp/building_4/building_4.jpg"> <img  width="224" src="./assets/building_comp/building_4/building_4.jpg" /> </a> </a></th>
+          <th><a href="./assets/building_comp/building_4/building_4_wooden_t2l.jpg"> <a href="./assets/building_comp/building_4/building_4_wooden_t2l.jpg"> <img  width="224" src="./assets/building_comp/building_4/building_4_wooden_t2l.jpg" /> </a> </a></th>
+          <th><a href="./assets/building_comp/building_4/building_4_wooden_dc.jpg"> <a href="./assets/building_comp/building_4/building_4_wooden_dc.jpg"> <img  width="224" src="./assets/building_comp/building_4/building_4_wooden_dc.jpg" /> </a> </a></th>
+          <th><a href="./assets/building_comp/building_4/building_4_wooden_flexit.jpg"> <a href="./assets/building_comp/building_4/building_4_wooden_flexit.jpg"> <img  width="224" src="./assets/building_comp/building_4/building_4_wooden_flexit.jpg" /> </a> </a></th>
+          <th><a href="./assets/building_comp/building_4/building_4_wooden_ours.jpg"> <a href="./assets/building_comp/building_4/building_4_wooden_ours.jpg"> <img  width="224" src="./assets/building_comp/building_4/building_4_wooden_ours.jpg" /> </a> </a></th>
+        </tr>
+    </tbody>
+</table>
+<!------------------ END SECTION ------------------>
+	
+	
+	
+  <p><br>
+  </p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+
+  <p>
+    <a name="ref-sdedit" id="ref-sdedit"></a>
+    [1] Chenlin Meng, Yang Song, Jiaming Song, Jiajun Wu, Jun-Yan Zhu, and Stefano Ermon. Sdedit: Image synthesis and editing with stochastic differential equations. arXiv preprint arXiv:2108.01073, 2021.
+  </p>
+  <p>
+    <a name="ref-p2p" id="ref-p2p"></a>
+    [2] Amir Hertz, Ron Mokady, Jay Tenenbaum, Kfir Aberman, Yael Pritch, and Daniel Cohen-Or. Prompt-to-prompt image editing with cross attention control. arXiv preprint arXiv:2208.01626, 2022.
+  </p>
+  <p>
+    <a name="ref-diffuseit" id="ref-diffuseit"></a>
+    [3] Gihyun Kwon and Jong Chul Ye. Diffusion-based image translation using disentangled style and content representation. arXiv preprint arXiv:2209.15264, 2022.
+  </p>
+  <p>
+    <a name="ref-vqclip" id="ref-vqclip"></a>
+    [4] Katherine Crowson, Stella Biderman, Daniel Kornis, Dashiell Stander, Eric Hallahan, Louis Castricato, and Edward Raff. Vqgan-clip: Open domain image generation and editing with natural language guidance. In European Conference on Computer Vision, pages 88–105. Springer, 2022.
+  </p>
+
+  <p>
+    <a name="ref-t2l" id="ref-t2l"></a>
+    [5] Omer Bar-Tal, Dolev Ofri-Amar, Rafail Fridman, Yoni Kasten, and Tali Dekel. Text2live: Text-driven layered image and video editing. In European Conference on Computer Vision. Springer, 2022.
+  </p>
+  <p>
+    <a name="ref-dclip" id="ref-dclip"></a>
+    [6] Gwanghyun Kim, Taesung Kwon, and Jong Chul Ye. Diffusionclip: Text-guided diffusion models for robust image manipulation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, 2022.
+  </p>
+  <p>
+    <a name="ref-flexit" id="ref-flexit"></a>
+    [7] Guillaume Couairon, Asya Grechka, Jakob Verbeek, Holger Schwenk, and Matthieu Cord. Flexit: Towards flexible semantic image translation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pp. 18270–18279, 2022.
+  </p>
+  
+
+</div>
+
+</body></html>

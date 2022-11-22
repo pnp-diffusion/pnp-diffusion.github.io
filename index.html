@@ -1,1 +1,326 @@
-Webpage coming soon.
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0045)http://6.869.csail.mit.edu/fa19/schedule.html -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<link href="https://fonts.cdnfonts.com/css/chalkduster" rel="stylesheet">
+<style>
+    @import url('https://fonts.cdnfonts.com/css/chalkduster');
+</style>
+<script src="./sm/assets/teaser-data.js"></script>
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Plug-and-Play Diffusion Features for Text-Driven Image-to-Image Translation</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <meta name="description"
+        content="Project page for &#39;Plug-and-Play Diffusion Features for Text-Driven Image-to-Image Translation.&#39;">
+    <link rel="icon" href="./pics/wis_logo.jpg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Plug-and-Play Diffusion Features for Text-Driven Image-to-Image Translation</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <meta name="description"
+        content="Project page for &#39;Plug-and-Play Diffusion Features for Text-Driven Image-to-Image Translation.&#39;">
+    <link rel="icon" href="./sm/assets/wis_logo.jpeg">
+</head>
+
+<body>
+    <p class="title">Plug-and-Play Diffusion Features for Text-Driven Image-to-Image Translation</p>
+    <p class="author">
+        <span class="author"><a target="_blank" href="https://www.linkedin.com/in/narek-tumanyan-5a3334122/">Narek
+                Tumanyan</a>&nbsp;<sup>*</sup></span>
+        <span class="author"><a target="_blank" href="https://www.linkedin.com/in/michal-geyer-aa3a021b1">Michal
+                Geyer&nbsp;</a><sup>*</sup></span>
+        <span class="author"><a target="_blank" href="https://www.weizmann.ac.il/math/bagon/home">Shai
+                Bagon</a>&nbsp;<sup>&nbsp;</sup></span>
+        <span class="author"><a target="_blank" href="https://www.weizmann.ac.il/math/dekel/">Tali
+                Dekel</a>&nbsp;<sup>&nbsp;</sup></span>
+    </p>
+    <table border="0" align="center" class="affiliations" width="1200px">
+        <tbody align="center">
+            <tr>
+                <td style="text-align: right; width: 17%"><img src="./sm/assets/wis_logo.jpeg" height="48" alt=""></td>
+                <td style="text-align: left; width:20%; ">&nbsp;<sup>&nbsp;</sup>&nbsp;<a
+                        href="https://www.weizmann.ac.il/pages/">Weizmann Institute of Science</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table width="999" border="0" align="center" class="menu" style="margin-bottom: 8px;">
+        <tbody>
+            <tr>
+                <td align="center">| <a href="#paper">Paper</a> | <a href="./sm/index.html" target="_blank">Supplementary Material</a> | <a
+                        class="isDisabled" href="#">Code (coming soon)</a> |</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="container">
+        <table width="1000" border="0" align="center">
+            <tbody>
+                <tr>
+                    <div id="imageCarousel" class="carousel slide teaser-carousel" data-ride="carousel" data-interval="5000">
+                        <div class="carousel-inner">
+                            <!-- White horse -->
+                            <div class="carousel-item active">
+                                <div>
+                                    <img class="teaser-img" src="./sm/assets/our_results/white_horse/horse.jpg" />
+                                    <span style="font-size: 150%;">→</span>
+                                    <img id="white-horse-result" class="teaser-img" src="./sm/assets/our_results/white_horse/pink_horse.jpg" />
+                                </div>
+                                <br />
+                                <div>
+                                    <div onclick="toggle_prompt('white-horse-pink', ['white-horse-bronze', 'white-horse-robot'], 'white-horse-result')" class="caption caption-active" id="white-horse-pink">"a photo of a pink toy horse on the beach"</div>
+                                    <br />
+                                    <div onclick="toggle_prompt('white-horse-bronze', ['white-horse-pink', 'white-horse-robot'], 'white-horse-result')" class="caption" id="white-horse-bronze">"a photo of a bronze horse in a museum"</div>
+                                    <br />
+                                    <div onclick="toggle_prompt('white-horse-robot', ['white-horse-bronze', 'white-horse-pink'], 'white-horse-result')" class="caption" id="white-horse-robot">"a photo of a robot horse"</div>
+                                </div>
+                            </div>
+
+                            
+                            <!-- Dancing couple -->
+                            <div class="carousel-item">
+                                <div>
+                                    <img class="teaser-img" src="./sm/assets/our_results/dancing_couple/dancing.jpg" />
+                                    <span style="font-size: 150%;">→</span>
+                                    <img id="dancing-result" class="teaser-img" src="./sm/assets/our_results/dancing_couple/robots_dancing.jpg" />
+                                </div>
+                                <br />
+                                <div>
+                                    <div onclick="toggle_prompt('dancing-robots', ['dancing-cartoon', 'dancing-wooden'], 'dancing-result')" class="caption caption-active" id="dancing-robots">"a photo of robots dancing"</div>
+                                    <br />
+                                    <div onclick="toggle_prompt('dancing-cartoon', ['dancing-robots', 'dancing-wooden'], 'dancing-result')" class="caption" id="dancing-cartoon">"a cartoon of a couple dancing"</div>
+                                    <br />
+                                    <div onclick="toggle_prompt('dancing-wooden', ['dancing-cartoon', 'dancing-robots'], 'dancing-result')" class="caption" id="dancing-wooden">"a photo of a wooden sculpture of a couple dancing"</div>
+                                </div>
+                            </div>
+
+                            
+                            <!-- Cat and bunny -->
+                            <div class="carousel-item">
+                                <div>
+                                    <img class="teaser-img" src="./sm/assets/our_results/cat_bunny_painting/cat_bunny_painting.jpg" />
+                                    <span style="font-size: 150%;">→</span>
+                                    <img id="cat-bunny-result" class="teaser-img" src="./sm/assets/our_results/cat_bunny_painting/bears.jpg" />
+                                </div>
+                                <br />
+                                <div>
+                                    <div onclick="toggle_prompt('cat-bunny-bears', ['cat-bunny-polygon'], 'cat-bunny-result')" class="caption caption-active" id="cat-bunny-bears">"a photorealistic image of bear cubs in the snow"</div>
+                                    <br />
+                                    <div onclick="toggle_prompt('cat-bunny-polygon', ['cat-bunny-bears'], 'cat-bunny-result')" class="caption" id="cat-bunny-polygon">"a polygonal illustration of a cat and a bunny"</div>
+                                </div>
+                            </div>
+
+                            
+                            <!-- Fish drawing -->
+                            <div class="carousel-item">
+                                <div>
+                                    <img class="teaser-img" src="./sm/assets/our_results/fish_drawing/fish.jpg" />
+                                    <span style="font-size: 150%;">→</span>
+                                    <img id="fish-drawing-result" class="teaser-img" src="./sm/assets/our_results/fish_drawing/sharks.jpg" />
+                                </div>
+                                <br />
+                                <div>
+                                    <div onclick="toggle_prompt('fish-drawing-sharks', ['fish-drawing-polygon'], 'fish-drawing-result')" class="caption caption-active" id="fish-drawing-sharks">"a photo of sharks in the ocean"</div>
+                                    <br />
+                                    <div onclick="toggle_prompt('fish-drawing-polygon', ['fish-drawing-sharks'], 'fish-drawing-result')" class="caption" id="fish-drawing-polygon">"a polygonal illustration of fish in the ocean"</div>
+                                </div>
+                            </div>
+
+                            
+                            <!-- Stones -->
+                            <div class="carousel-item">
+                                <div>
+                                    <img class="teaser-img" src="./sm/assets/our_results/stones/stones.jpg" />
+                                    <span style="font-size: 150%;">→</span>
+                                    <img id="stones-result" class="teaser-img" src="./sm/assets/our_results/stones/wedding_cake.jpg" />
+                                </div>
+                                <br />
+                                <div>
+                                    <div onclick="toggle_prompt('stones-wedding-cake', ['stones-skyscraper', 'stones-tower'], 'stones-result')" class="caption caption-active" id="stones-wedding-cake">"a photo of a white wedding cake"</div>
+                                    <br />
+                                    <div onclick="toggle_prompt('stones-skyscraper', ['stones-wedding-cake', 'stones-tower'], 'stones-result')" class="caption" id="stones-skyscraper">"a photo of a skyscraper"</div>
+                                    <br />
+                                    <div onclick="toggle_prompt('stones-tower', ['stones-wedding-cake', 'stones-skyscraper'], 'stones-result')" class="caption" id="stones-tower">"a photo of a tower in snow"</div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <a class="carousel-control-prev" href="#imageCarousel" role="button" data-slide="prev">
+                            <div class="slider-navigation-previous">
+                                <svg viewBox="0 0 50 80" xml:space="preserve">
+                                    <polyline fill="white" stroke-width=".5em" stroke-linecap="round"
+                                        stroke-linejoin="round" points="45.63,75.8 0.375,38.087 45.63,0.375 ">
+                                    </polyline>
+                                </svg>
+                            </div>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#imageCarousel" role="button" data-slide="next">
+                            <div class="slider-navigation-next">
+                                <svg viewBox="0 0 50 80" xml:space="preserve">
+                                    <polyline fill="white" stroke-width=".5em" stroke-linecap="round"
+                                        stroke-linejoin="round" points="0.375,0.375 45.63,38.087 0.375,75.8 ">
+                                    </polyline>
+                                </svg>
+                            </div>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </tr>
+                <tr> <br /> </tr>
+                <tr>
+                    <td style="text-align: left; width: 17%"><i>*Equal contribution.</i></td>
+                </tr>
+                <tr align="center"></tr>
+            </tbody>
+        </table>
+
+        &nbsp;
+
+        <p><span class="section"><b>Abstract</b></span> </p>
+        <p> Large-scale text-to-image generative models have been a revolutionary breakthrough
+            in the evolution of generative AI, allowing us to synthesize diverse images that convey
+            highly complex visual concepts. However, a pivotal challenge in leveraging such models
+            for real-world content creation tasks is providing users with control over the generated
+            content. In this paper, we present a new framework that takes text-to-image synthesis to
+            the realm of image-to-image translation -- given a guidance image and a target text prompt,
+            our method harnesses the power of a pre-trained text-to-image diffusion model to generate a
+            new image that complies with the target text, while preserving the semantic layout of the
+            source image. Specifically, we observe and empirically demonstrate that fine-grained control
+            over the generated structure can be achieved by manipulating spatial features and their
+            self-attention inside the model. This results in a simple and effective approach, where
+            features extracted from the guidance image are directly injected into the generation
+            process of the target image, requiring no training or fine-tuning and applicable for both
+            real or generated guidance images. We demonstrate high-quality results on versatile
+            text-guided image translation tasks, including translating sketches, rough drawings and
+            animations into realistic images, changing of the class and appearance of objects in a given
+            image, and modifications of global qualities such as lighting and color.
+        <p class="section">&nbsp;</p>
+        <p class="section"><b>Additional Results</b></p>
+        <div style="text-align: center">
+            <img src="./sm/assets/results.jpg" alt="" width="850" style="margin: auto" />
+        </div>
+
+        <p class="section">&nbsp;</p>
+        <p class="section" id="paper"><b>Paper</b></p>
+        <table width="940" border="0">
+            <tbody>
+                <tr>
+                    <td height="100"><a href="paper.pdf" target="_blank" rel="noopener noreferrer"><img
+                                src="./sm/assets/paper_cover.jpeg" alt="" width="140" height="167"></a></td>
+                    <td width="750">
+                        <p><b>Plug-and-Play Diffusion Features for Text-Driven Image-to-Image Translation</b><br>
+                            Narek Tumanyan <sup>*</sup>, Michal Geyer <sup>*</sup>, Shai Bagon, Tali Dekel.<br />
+                            (* indicates equal contribution) <br>
+                            [<a href="https://arxiv.org/abs/2201.00424" target="_blank"
+                                rel="noopener noreferrer">paper</a>]</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="section">&nbsp;</p>
+        <p class="section" id="sm"><b>Supplementary Material</b></p>
+        <table width="587" height="136" border="0">
+            <tbody>
+                <tr>
+                    <td width="180"><img src="./sm/assets/sm.png" alt="" height="150"></td>
+                    <td align="left">
+                        <p>[<a href="./sm/index.html" target="_blank">supplementary page</a>]</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!--          <p class="section">&nbsp;</p>-->
+        <!--          <p class="section" id="code"><b>Code</b></p>-->
+        <!--          <table border="0">-->
+        <!--            <tbody>-->
+        <!--              <tr>-->
+        <!--                <td width="80"><img src="./pics/github_logo.png" alt="" height="50"></td>-->
+        <!--                <td align="left">-->
+        <!--                  <a href="https://github.com/omerbt/Splice">pytorch code</a>-->
+        <!--                </td>-->
+        <!--              </tr>-->
+        <!--            </tbody>-->
+        <!--          </table>-->
+        <p class="section">&nbsp;</p>
+
+        <p class="section" id="bibtex"><b>Bibtex</b></p>
+        <table border="0">
+            <tbody>
+                <pre style=" display: block;
+  background: #eee;
+  white-space: pre;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+  min-width: 100px;
+  border-radius: 20px;
+  padding: 0;;">
+
+  Bibtex goes here...
+			  </pre>
+
+
+            </tbody>
+        </table>
+    </div>
+
+
+
+</body>
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-WLX2Z5QLG8');
+ </script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <script type="text/javascript">
+    $(document).ready(function () {
+
+        if (localStorage.getItem("my_app_name_here-quote-scroll") != null) {
+            $(window).scrollTop(localStorage.getItem("my_app_name_here-quote-scroll"));
+        }
+
+        $(window).on("scroll", function() {
+            localStorage.setItem("my_app_name_here-quote-scroll", $(window).scrollTop());
+        });
+
+      });
+ </script>
+
+ <script>
+    function prompt_on(prompt_element) {
+        prompt_element.classList.add("caption-active");
+    }
+
+    function prompt_off(prompt_element) {
+        prompt_element.classList.remove("caption-active");
+    }
+
+    function toggle_prompt(active_prompt_id, inactive_prompt_ids, result_id) {
+        let active_prompt = document.getElementById(active_prompt_id);
+        prompt_on(active_prompt);
+        for (let i = 0; i < inactive_prompt_ids.length; i++) {
+            let inactive_prompt = document.getElementById(inactive_prompt_ids[i]);
+            prompt_off(inactive_prompt);
+        }
+
+        let result = document.getElementById(result_id);
+        result.src = file_paths[active_prompt_id];
+    }
+ </script>
+
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</html>

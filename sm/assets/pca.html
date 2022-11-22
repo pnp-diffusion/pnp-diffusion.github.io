@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Plug-and-Play Diffusion Features for Text-Driven Image-to-Image Translation</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="./style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<!-- <button style="position: fixed;right: 15px;top:  50%;height: 100px;width: 140px; font-size: 20px;" type="button"><a href="#top">Back to top</a></button>  -->
+<div class="page-container-pca">
+  <h1 align="center">Plug-and-Play Diffusion Features for Text-Driven Image-to-Image Translation</h1>
+  <h2 align="center">Supplementary Material</h2>
+	
+  <p align="center">&nbsp;</p>
+	<a href="#top"></a>
+  <ul>
+	<li><a href="../index.html">Back to main page</a></li>
+  </ul>
+  <p><br><span class="emph">We recommend watching all images in full screen. Click on the images for seeing them in full scale.</span></p>
+	
+  <!------------------ BEGIN SECTION ------------------>
+
+  <p>&nbsp;</p>
+  <hr>
+  <p>&nbsp;</p>
+	
+  <h2 id="our_results_container" align="left"><a name="image-results" id="image-results"></a>Diffusion Features PCA Visualizations</h2>
+  <p align="left">To visualize the features of the diffusion model, we perform a PCA analysis on features extracted from three different sets of images.
+    Specifically, for each set, we extract features from the decoder layers of the U-Net and apply PCA on the features of each set (Section 3, Figure 4 in the paper).
+    Layer 4 features (highlighted in orange) reveal semantic regions (e.g., legs, torso etc.) that are shared across all images in each set.
+    That is, similar semantic regions are depicted in similar colors in PCA space.
+    We also note that features at higher resolution capture low-level, high-frequency information, while coarser features depict a rough location of the dominant object.
+  </p>
+  <br/>
+
+  <table>
+    <tbody>
+        <tr>
+            <td><button id="btn-set-0" class="btn btn-primary" onclick="set_current_image_set(0)">Instruments</button></td>
+            <td><button id="btn-set-1" class="btn btn-secondary" onclick="set_current_image_set(1)">Animals</button></td>
+            <td><button id="btn-set-2" class="btn btn-secondary" onclick="set_current_image_set(2)">Humanoids</button></td>
+        </tr>
+        
+    </tbody>
+  </table>
+
+  <br />
+
+  <div class="row" style="margin-left: 5px;">
+    <label style="width: 170px; margin-bottom: 0px;" for="pca_threshold" class="form-label" id="pca_threshold_label">Current timestep: 540</label>
+    <input style="width: 400px" type="range" class="form-range" id="pca_threshold" list="pca_thresholds" oninput="set_pca_threshold(this.value)" max="2" value="1" />
+    <datalist id="pca_thresholds">
+        <option value="0" label="340"></option>
+        <option value="1" label="540"></option>
+        <option value="2" label="800"></option>
+    </datalist>
+  </div>
+  
+
+  <br />
+  
+  <table class="pca-table" width="1200" align="center">
+		<tbody id="table-body">
+
+		</tbody>
+	</table>
+    <!------------------ END SECTION ------------------>
+
+
+
+	
+	
+  <p><br>
+  </p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+
+</div>
+
+</body>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="./pca_experiments.js"></script>
+
+<script>
+
+    var timesteps = [17, 27, 40];
+    var timesteps_scaled = [340, 540, 800];
+    var current_image_set = 0;
+    var current_timestep_idx = 1;
+    var image_set_len = 3
+    var pca_layers = [1, 4, 7, 11];
+    load_results();
+
+
+    function btn_on(btn) {
+        btn.classList.remove("btn-secondary");
+        btn.classList.add("btn-primary");
+    }
+
+
+    function btn_off(btn) {
+        btn.classList.add("btn-secondary");
+        btn.classList.remove("btn-primary");
+    }
+
+    
+    function set_current_image_set(image_set) {
+        current_image_set = image_set;
+        for (let i = 0; i < image_set_len; i++) {
+            let btn = document.getElementById(`btn-set-${i}`);
+            if (current_image_set == i) {
+                btn_on(btn);
+            } else {
+                btn_off(btn);
+            }
+        }
+        load_results();
+    }
+
+
+    function set_pca_threshold(threshold) {
+        current_timestep_idx = threshold;
+        let label = document.getElementById("pca_threshold_label");
+        label.innerHTML = `Current timestep: ${timesteps_scaled[current_timestep_idx]}`;
+        load_results();
+    }
+    
+
+    function load_results() {
+        let current_experiment = experiments[current_image_set];
+        let table_body = document.getElementById("table-body");
+        table_body.innerHTML = `
+                <tr>
+                    <th style="font-size: 16px">Images</th>
+                    <th style="font-size: 16px">decoder layer 1</th>
+                    <th style="font-size: 16px; color: orange">decoder layer 4</th>
+                    <th style="font-size: 16px">decoder layer 7</th>
+                    <th style="font-size: 16px">decoder layer 11</th>
+                </tr>
+        `;
+
+        for (let j = 0; j < current_experiment.source_experiments.length; j++) {
+            html_content = "";
+            html_content += "<tr>";
+            html_content += `
+                    <td><a href="./pca/${current_experiment.folder}/source_images/${current_experiment.source_filenames[j]}.jpg"> <a href="./pca/${current_experiment.folder}/source_images/${current_experiment.source_filenames[j]}.jpg"> <img  width="130" src="./pca/${current_experiment.folder}/source_images/${current_experiment.source_filenames[j]}.jpg" /> </a> </a></td>
+            `
+
+            for (let i = 0; i < pca_layers.length; i++) {
+                html_content += `
+                        <td><a href="./pca/${current_experiment.folder}/output_block_${pca_layers[i]}/${current_experiment.source_experiments[j]}_time_${timesteps[current_timestep_idx]}.jpg"> <a href="./pca/${current_experiment.folder}/output_block_${pca_layers[i]}/${current_experiment.source_experiments[j]}_time_${timesteps[current_timestep_idx]}.jpg"> <img  width="130" src="./pca/${current_experiment.folder}/output_block_${pca_layers[i]}/${current_experiment.source_experiments[j]}_time_${timesteps[current_timestep_idx]}.jpg" /> </a> </a></td>
+                `
+            }
+            table_body.innerHTML += "</tr>";
+            table_body.innerHTML += html_content;
+        }
+    }
+
+
+
+</script>
+
+
+</html>
